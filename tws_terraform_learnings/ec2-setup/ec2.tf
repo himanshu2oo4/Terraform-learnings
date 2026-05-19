@@ -39,6 +39,7 @@ resource "aws_default_vpc" "defaultVPC" {
   
 }
 
+# creating the security group 
 resource "aws_security_group" "my_sec_group"{
     name = "automate-sg"
     description = "this will add a tf generated SG"
@@ -72,7 +73,7 @@ resource "aws_security_group" "my_sec_group"{
         description = "Flask app "
     }
 
-    # this will allow you ec2 to download everything from internet 
+    # allows my ec2 to download everything from internet !!  
     egress{
         from_port = 0 
         to_port = 0 
@@ -89,11 +90,11 @@ resource "aws_security_group" "my_sec_group"{
 resource "aws_instance" "my_instance" {
     key_name = aws_key_pair.keyForEc2.key_name
     security_groups = [aws_security_group.my_sec_group.name]
-    instance_type = "t3.micro"
-    ami = "ami-07a00cf47dbbc844c"
+    instance_type = var.ec2_instance_type
+    ami = var.ec2_ami_id
     # setting storage for the ec2 
     root_block_device {
-      volume_size = 8 
+      volume_size = var.ec2_root_storage_volume
       volume_type = "gp3"
     }
 
