@@ -92,6 +92,10 @@ resource "aws_instance" "my_instance" {
     security_groups = [aws_security_group.my_sec_group.name]
     instance_type = var.ec2_instance_type
     ami = var.ec2_ami_id
+
+    user_data = file("install_nginx.sh")   # user script which we pass while creating the ec2 instance 
+    
+
     # setting storage for the ec2 
     root_block_device {
       volume_size = var.ec2_root_storage_volume
