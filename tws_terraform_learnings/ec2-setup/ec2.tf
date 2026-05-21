@@ -117,8 +117,9 @@ resource "aws_instance" "my_instance" {
 
 
   # setting storage for the ec2 
-  root_block_device {
-    volume_size = var.ec2_root_storage_volume
+  root_block_device {    # if the env  is production then put the size 20 else 10 
+                      # syntax : condition ? True : False 
+    volume_size = var.env == "prd" ? 20 : 10 
     volume_type = "gp3"
   }
 

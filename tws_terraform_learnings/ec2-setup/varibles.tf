@@ -27,8 +27,12 @@ variable "ec2_ami_id" {
   type    = string
 }
 
-variable "ec2_root_storage_volume" {
+variable "ec2_default_root_storage_volume" {
   default = 8
   type    = number
 }
 
+
+variable "env" {
+  default = "dev"
+}

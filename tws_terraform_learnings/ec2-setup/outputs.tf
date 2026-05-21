@@ -35,5 +35,7 @@ output "ec2_public_ip" {
 }
 
 output "ec2_private_ip" {
-    value = values(aws_instance.my_instance)[*].private_ip
+    # instead of values func you can use 
+    value = [ for i in aws_instance.my_instance : i.private_ip]
+
 }
