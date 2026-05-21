@@ -10,5 +10,5 @@ terraform.tfstate.*
 
 mykey
 mykey.pub
-terra-key-ec2
-terra-key-ec2.pub
+tws_terraform_learnings/ec2-setup/terra-key-ec2
+tws_terraform_learnings/ec2-setup/terra-key-ec2.pub
